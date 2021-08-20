@@ -14,7 +14,7 @@ config = configparser.ConfigParser()
 
 config.read("conf.ini")
 
-bot = telebot.TeleBot(config["DATA"]["token"])
+bot = telebot.TeleBot(config["DATA"]["token"].strip())
 
 connection = pymysql.connect(host=config["DB"]["host"],
                              port=int(config["DB"]["port"]),
