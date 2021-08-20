@@ -14,7 +14,7 @@ config = configparser.ConfigParser()
 
 config.read("conf.ini")
 
-bot = telebot.TeleBot("1959119667:AAEKZcVi2IcoFtRg2pbmstTjoyqcCjsGmtU")
+bot = telebot.TeleBot(config["DATA"]["token"])
 
 connection = pymysql.connect(host=config["DB"]["host"],
                              port=int(config["DB"]["port"]),
@@ -100,6 +100,7 @@ def queries(message):
                         for row in res:
                             resultsTable.append(list(row.values()))
                         info = tabulate(resultsTable, headers=res[0].keys())
+                    info = "```\n"+info+"\n```"
                     if len(info) > 4096:
                         r = open("results.txt", "w+")
                         r.write(info)
