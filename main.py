@@ -111,6 +111,7 @@ def queries(message):
                         bot.send_message(message.chat.id, info)
     except Exception as e:
         bot.reply_to(message, str(e))
+        print(e)
     bot.send_message(message.chat.id, "Done ...")
 
 
