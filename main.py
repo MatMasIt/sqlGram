@@ -1,6 +1,6 @@
 import configparser
 import json
-
+import traceback
 import colorama
 import pymysql.cursors
 import telebot
@@ -112,6 +112,7 @@ def queries(message):
     except Exception as e:
         bot.reply_to(message, str(e))
         print(e)
+        traceback.print_exc()
     bot.send_message(message.chat.id, "Done ...")
 
 
